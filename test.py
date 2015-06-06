@@ -30,11 +30,11 @@ lcd.clear()
 lcd.message('Press buttons...')
 
 # Make list of button value, text, and backlight color.
-buttons = ( (LCD.SELECT, 'Select', (1,1,1)),
+buttons = ( (LCD.SELECT, 'Select', (1,0,0)),
             (LCD.LEFT,   'Left'  , (1,0,0)),
-            (LCD.UP,     'Up'    , (0,0,1)),
-            (LCD.DOWN,   'Down'  , (0,1,0)),
-            (LCD.RIGHT,  'Right' , (1,0,1)) )
+            (LCD.UP,     'Up'    , (1,0,0)),
+            (LCD.DOWN,   'Down'  , (1,0,0)),
+            (LCD.RIGHT,  'Right' , (1,0,0)) )
 
 print 'Press Ctrl-C to quit.'
 while True:
