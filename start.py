@@ -10,7 +10,7 @@ import Adafruit_CharLCD as LCD
 # Initialize the LCD using the pins 
 lcd = LCD.Adafruit_CharLCDPlate()
 
-lcd.backlight(lcd.ON)
+lcd.set_backlight(1)
 
 
 '''
@@ -39,7 +39,7 @@ while True:
 	try:
 		s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 		s.connect(('8.8.8.8', 0))
-		lcd.backlight(lcd.ON)
+		lcd.set_backlight(1)
 		lcd.clear()
 		lcd.message('IP address:\n' + s.getsockname()[0])
 		time.sleep(5)
