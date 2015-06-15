@@ -13,7 +13,7 @@ os.system("sudo hciconfig hci0 up")
 os.system("sudo hcitool lescan > results.txt &")
 
 #wait for the results
-time.sleep(10)
+time.sleep(20)
 
 #Stop the scan
 os.system("sudo pkill --signal SIGINT hcitool")
@@ -25,5 +25,10 @@ f.closed
 
 #Remove empty lines from the list
 results = filter(None, results)
+
+#Remove the fist info message
+if "LE Scan ..." in results: results.remove("LE Scan ...")
+
+print len(results), " devices found"
 
 print results
