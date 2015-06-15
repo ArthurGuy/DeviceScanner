@@ -10,21 +10,21 @@ os.system("sudo hciconfig hci0 up")
 print("performing scan...")
 
 # open temporary file (it automatically deleted when it is closed)
-    #  `Popen` requires `f.fileno()` so `SpooledTemporaryFile` adds nothing here
-    f = tempfile.TemporaryFile() 
+#  `Popen` requires `f.fileno()` so `SpooledTemporaryFile` adds nothing here
+f = tempfile.TemporaryFile() 
 
-    # start process, redirect stdout
-    p = subprocess.Popen(["sudo hcitool lescan"], stdout=f)
+# start process, redirect stdout
+p = subprocess.Popen(["sudo hcitool lescan"], stdout=f)
 
-    # wait 2 seconds
-    time.sleep(20)
+# wait 2 seconds
+time.sleep(20)
 
-    # kill process
-    #NOTE: if it doesn't kill the process then `p.wait()` blocks forever
-    p.terminate() 
-    p.wait() # wait for the process to terminate otherwise the output is garbled
+# kill process
+#NOTE: if it doesn't kill the process then `p.wait()` blocks forever
+p.terminate() 
+p.wait() # wait for the process to terminate otherwise the output is garbled
 
-    # print saved output
-    f.seek(0) # rewind to the beginning of the file
-    print f.read(), 
-    f.close()
+# print saved output
+f.seek(0) # rewind to the beginning of the file
+print f.read(), 
+f.close()
