@@ -13,7 +13,7 @@ from subprocess import Popen, PIPE
 
 proc = Popen(["sudo timeout 20 hcitool lescan"], stdout=PIPE, bufsize=1) # start process
 
-while prox.poll():
+while proc.poll():
     for line in iter(proc.stdout.readline, b''): # read output line-by-line
         print line,
 # reached EOF, nothing more to read
