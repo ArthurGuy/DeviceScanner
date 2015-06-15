@@ -2,6 +2,7 @@ import subprocess
 import tempfile
 import time
 import os
+import json
 
 print("performing scan...")
 
@@ -35,6 +36,6 @@ if "LE Scan ..." in results: results.remove("LE Scan ...")
 print len(results), "devices found"
 
 #Split into mac and name
-results = [s.split(" ") for s in results]
+results = [s.split(" ", 1) for s in results]
 
 print results
