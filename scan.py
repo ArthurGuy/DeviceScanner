@@ -15,7 +15,7 @@ proc = Popen(["sudo", "hcitool", "lescan"], stdout=PIPE, bufsize=1) # start proc
 
 time.sleep(20)
 
-proc.kill()
+proc.terminate()
 
 for line in iter(proc.stdout.readline, b''): # read output line-by-line
     print line,
