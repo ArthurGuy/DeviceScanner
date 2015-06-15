@@ -11,9 +11,25 @@ import math
 import time
 import socket, urllib2
 
+import signal
+import sys
+
 import Adafruit_CharLCD as LCD
 
 url = "http://requestb.in/v6s4jmv6"
+
+
+
+
+# shutdown handler
+def signal_handler(signal, frame):
+    print 'You pressed Ctrl+C!'
+    # kill the bluetooth scan
+    os.system("sudo pkill --signal SIGINT hcitool")
+    sys.exit(0)
+
+# register the handler
+signal.signal(signal.SIGINT, signal_handler)
 
 
 # Initialize the LCD using the pins 
