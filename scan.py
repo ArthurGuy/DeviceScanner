@@ -11,7 +11,7 @@ print("performing scan...")
 
 from subprocess import Popen, PIPE
 
-proc = Popen(["sudo timeout 20 hcitool lescan"], stdout=PIPE, bufsize=1) # start process
+proc = Popen(["sudo hcitool lescan"], stdout=PIPE, bufsize=1) # start process
 
 while proc.poll():
     for line in iter(proc.stdout.readline, b''): # read output line-by-line
