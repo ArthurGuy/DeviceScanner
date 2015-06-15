@@ -152,7 +152,8 @@ while True:
 	#print json.dumps(device_list)
 	
 	# Send the data to the server
-	r = requests.post(url, data=json.dumps(device_list))
+	headers = {'content-type': 'application/json'}
+	r = requests.post(url, data=json.dumps(device_list), headers=headers)
 
 	# Wait 30 seconds and then do it again
 	time.sleep(30)
