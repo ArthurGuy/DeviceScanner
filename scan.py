@@ -5,7 +5,7 @@ import os
 import json
 import requests
 
-url = "http://postcatcher.in/catchers/557e67558691cf030000bdb5"
+url = "http://requestb.in/v6s4jmv6"
 
 print("performing scan...")
 
@@ -38,11 +38,18 @@ if "LE Scan ..." in results: results.remove("LE Scan ...")
 
 print len(results), "devices found"
 
-#Split into mac and name
-results = [s.split(" ", 1) for s in results]
-
 print results
 
-print json.dumps(results)
+device_list = []
 
-r = requests.post(url, data=json.dumps(results))
+#Split into mac and name
+for result in results:
+    result_parts = result.split(" ", 1)
+    device_list.append({'mac': result_parts[0], 'name': result_parts[1]})
+#results = [s.split(" ", 1) for s in results]
+
+print device_list
+
+print json.dumps(device_list)
+
+r = requests.post(url, data=json.dumps(device_list))
