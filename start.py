@@ -156,7 +156,15 @@ while True:
 	# Send the data to the server
 	headers = {'content-type': 'application/json'}
 	data = {'payload': {'bluetooth_devices': device_list}, 'service':'device-scanner', 'device':'bluetooth-scanner', 'message':'update'}
-	r = requests.post(url, data=json.dumps(data), headers=headers)
+	try :
+		r = requests.post(url, data=json.dumps(data), headers=headers, timeout=10)
+		break
+	except:
+		lcd.clear()
+		lcd.message(sys.exc_info()[0]);
+		
+		time.sleep(5)
+		break
 	
 	lcd.clear()
 	lcd.message(str(len(device_list)) + " devices found\nSleeping")
