@@ -94,7 +94,7 @@ while True:
 
 	# Display scan start message
 	lcd.clear()
-	lcd.message('Perforing scan..')
+	lcd.message('Performing scan.')
 	
 	print("performing scan...")
 	
