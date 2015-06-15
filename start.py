@@ -160,6 +160,6 @@ while True:
 	lcd.message(str(len(device_list)) + " devices found")
 	lcd.message("Sleeping");
 
-	# Wait 30 seconds and then do it again
-	time.sleep(30)
+	# Wait 60 seconds and then do it again
+	time.sleep(60)
 
