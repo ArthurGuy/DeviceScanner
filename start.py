@@ -110,19 +110,25 @@ while True:
 	
 	print len(results), "devices found"
 	
-	# Output the umber of devices found to the display
+	# Output the number of devices found to the display
 	lcd.clear()
 	lcd.message(str(len(results)) + " devices found")
 	
 	#print results
 	
-	device_list = []
+	device_list = {}
 	
 	#Split into mac and name
 	for result in results:
 	    result_parts = result.split(" ", 1)
-	    device_list.append({'mac': result_parts[0], 'name': result_parts[1]})
-	#results = [s.split(" ", 1) for s in results]
+	    mac = result_parts[0];
+	    name = result_parts[1];
+	    if (name == '(unknown)'):
+	    	name = ''
+	    
+	    # if nac not set or max name is empty
+	    if (not mac in device_list or not device_list[mac]):
+	    	device_list[mac] = name
 	
 	print device_list
 	
