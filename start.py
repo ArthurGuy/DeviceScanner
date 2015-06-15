@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+#http://www.elinux.org/RPi_Bluetooth_LE
+
 import subprocess
 import tempfile
 import time
@@ -16,7 +18,7 @@ import sys
 
 import Adafruit_CharLCD as LCD
 
-url = "https://bbms.buildbrighton.com/device-scanner"
+url = "https://bbms.buildbrighton.com/acs"
 
 
 
@@ -153,7 +155,7 @@ while True:
 	
 	# Send the data to the server
 	headers = {'content-type': 'application/json'}
-	data = {'devices': device_list}
+	data = {'payload': {'bluetooth_devices': device_list}, 'service':'device-scanner', 'device':'bluetooth-scanner', 'message':'update'}
 	r = requests.post(url, data=json.dumps(data), headers=headers)
 	
 	lcd.clear()
