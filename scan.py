@@ -26,11 +26,15 @@ f.closed
 #Remove empty lines from the list
 results = filter(None, results)
 
+#trim each item - removes the newline character
 results = [s.strip() for s in results]
 
 #Remove the fist info message
 if "LE Scan ..." in results: results.remove("LE Scan ...")
 
-print len(results), " devices found"
+print len(results), "devices found"
+
+#Split into mac and name
+results = [s.split(" ") for s in results]
 
 print results
