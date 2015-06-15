@@ -3,6 +3,9 @@ import tempfile
 import time
 import os
 import json
+import requests
+
+url = "http://postcatcher.in/catchers/557e67558691cf030000bdb5"
 
 print("performing scan...")
 
@@ -39,3 +42,5 @@ print len(results), "devices found"
 results = [s.split(" ", 1) for s in results]
 
 print results
+
+r = requests.post(url, data=json.dumps(results))
