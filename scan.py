@@ -9,22 +9,14 @@ os.system("sudo hciconfig hci0 up")
 
 print("performing scan...")
 
-# open temporary file (it automatically deleted when it is closed)
-#  `Popen` requires `f.fileno()` so `SpooledTemporaryFile` adds nothing here
-f = tempfile.TemporaryFile() 
+from subprocess import Popen, PIPE
 
-# start process, redirect stdout
-p = subprocess.Popen(["sudo hcitool lescan"], stdout=f)
+proc = Popen(["sudo", "hcitool", "lescan"], stdout=PIPE, bufsize=1) # start process
 
-# wait 2 seconds
 time.sleep(20)
 
-# kill process
-#NOTE: if it doesn't kill the process then `p.wait()` blocks forever
-p.terminate() 
-p.wait() # wait for the process to terminate otherwise the output is garbled
-
-# print saved output
-f.seek(0) # rewind to the beginning of the file
-print f.read(), 
-f.close()
+for line in iter(proc.stdout.readline, b''): # read output line-by-line
+    print line,
+# reached EOF, nothing more to read
+proc.communicate() # close `proc.stdout`, wait for child process to terminate
+print "Exit status", proc.returncode
