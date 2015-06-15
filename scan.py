@@ -9,13 +9,15 @@ os.system("sudo hciconfig hci0 up")
 
 print("performing scan...")
 
-from subprocess import Popen, PIPE
+//Start the scan
+os.system("sudo hcitool lescan > results.txt &")
 
-proc = Popen(["sudo timeout 20 hcitool lescan"], stdout=PIPE, bufsize=1) # start process
+time.sleep(10)
 
-with p.stdout:
-    for line in iter(p.stdout.readline, b''):
-        print line,
-p.wait() # wait for the subprocess to exit
+//Stop the scan
+os.system("sudo pkill --signal SIGINT hcitool")
 
-print "Exit status", proc.returncode
+with open('results.txt', 'r') as f:
+    read_data = f.read()
+    print read_data
+f.closed
