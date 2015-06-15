@@ -112,7 +112,7 @@ while True:
 	print len(results), "devices found"
 	
 	lcd.clear()
-	lcd.message(len(results), "devices found")
+	lcd.message(len(results) + " devices found")
 	
 	#print results
 	
