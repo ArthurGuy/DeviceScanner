@@ -94,7 +94,7 @@ while True:
 
 	# Display scan start message
 	lcd.clear()
-	lcd.message('Performing scan.')
+	lcd.message('Scanning...')
 	
 	print("performing scan...")
 	
@@ -146,6 +146,7 @@ while True:
 	# Output the number of devices found to the display
 	lcd.clear()
 	lcd.message(str(len(device_list)) + " devices found")
+	lcd.message("Uploading");
 	
 	print device_list
 	
@@ -154,6 +155,10 @@ while True:
 	# Send the data to the server
 	headers = {'content-type': 'application/json'}
 	r = requests.post(url, data=json.dumps(device_list), headers=headers)
+	
+	lcd.clear()
+	lcd.message(str(len(device_list)) + " devices found")
+	lcd.message("Sleeping");
 
 	# Wait 30 seconds and then do it again
 	time.sleep(30)
