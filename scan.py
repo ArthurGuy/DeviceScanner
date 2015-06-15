@@ -13,9 +13,9 @@ from subprocess import Popen, PIPE
 
 proc = Popen(["sudo timeout 20 hcitool lescan"], stdout=PIPE, bufsize=1) # start process
 
-while proc.poll() is None:
-    output = proc.stdout.readline()
-    print output,
-# reached EOF, nothing more to read
-proc.communicate() # close `proc.stdout`, wait for child process to terminate
+with p.stdout:
+    for line in iter(p.stdout.readline, b''):
+        print line,
+p.wait() # wait for the subprocess to exit
+
 print "Exit status", proc.returncode
