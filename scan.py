@@ -1,28 +1,10 @@
+from subprocess import Popen, PIPE
 
-print("performing inquiry...")
+print("performing scan...")
 
-from os import kill
-import signal
-import subprocess
-import threading
-import tempfile
-import sys
-import time
-from tempfile import TemporaryFile
-import commands
-t = TemporaryFile()
-global pipe_output
-p = subprocess.Popen('hcitool lescan', bufsize = 0,shell = True, stdout =subprocess.PIPE,stderr = subprocess.STDOUT)
-time.sleep(10)
-#os.kill(p.pid,signal.SIGTERM)
-for i in range(0,30,1):
-    print 'for'
-    inchar = p.stdout.readline()
-    i+=1
-    if inchar:
-        print 'loop num:',i
-        print str(inchar)
-        t.write(str(inchar))
-print 'out of loop'
-t.seek(0)
-print t.read()
+proc = Popen(["sudo", "hcitool", "lescan"], stdout=PIPE, bufsize=1) # start process
+for line in iter(proc.stdout.readline, b''): # read output line-by-line
+    print line,
+# reached EOF, nothing more to read
+proc.communicate() # close `proc.stdout`, wait for child process to terminate
+print "Exit status", proc.returncode
