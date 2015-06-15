@@ -12,13 +12,6 @@ from tempfile import TemporaryFile
 import commands
 t = TemporaryFile()
 global pipe_output
-print commands.getoutput("hcitool dev")
-print 'down'
-commands.getoutput('hciconfig hci0 down')
-print 'up'
-commands.getoutput('hciconfig hci0 up')
-print commands.getoutput("hcitool dev")
-commands.getoutput('killall hcitool')
 p = subprocess.Popen('hcitool lescan', bufsize = 0,shell = True, stdout =subprocess.PIPE,stderr = subprocess.STDOUT)
 time.sleep(10)
 #os.kill(p.pid,signal.SIGTERM)
