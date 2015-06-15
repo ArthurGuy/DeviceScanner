@@ -16,7 +16,7 @@ import sys
 
 import Adafruit_CharLCD as LCD
 
-url = "http://requestb.in/v6s4jmv6"
+url = "https://bbms.buildbrighton.com/device-scanner"
 
 
 
