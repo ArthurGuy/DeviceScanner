@@ -108,13 +108,7 @@ while True:
 	#Remove the fist info message
 	if "LE Scan ..." in results: results.remove("LE Scan ...")
 	
-	print len(results), "devices found"
-	
-	# Output the number of devices found to the display
-	lcd.clear()
-	lcd.message(str(len(results)) + " devices found")
-	
-	#print results
+	#process results
 	
 	device_list = {}
 	
@@ -129,6 +123,12 @@ while True:
 	    # if nac not set or max name is empty
 	    if (not mac in device_list or not device_list[mac]):
 	    	device_list[mac] = name
+	
+	print len(device_list), "devices found"
+	
+	# Output the number of devices found to the display
+	lcd.clear()
+	lcd.message(str(len(device_list)) + " devices found")
 	
 	print device_list
 	
