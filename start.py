@@ -23,9 +23,10 @@ url = "http://requestb.in/v6s4jmv6"
 
 # shutdown handler
 def signal_handler(signal, frame):
-    print 'You pressed Ctrl+C!'
+    print 'Stopping...'
     # kill the bluetooth scan
     os.system("sudo pkill --signal SIGINT hcitool")
+    print ' done'
     sys.exit(0)
 
 # register the handler
