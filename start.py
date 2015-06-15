@@ -92,6 +92,21 @@ lcd.clear()
 lcd.message('Device Scanner')
 time.sleep(3.0)
 
+
+
+# Send boot message
+
+headers = {'content-type': 'application/json'}
+data = {'service':'device-scanner', 'device':'bluetooth-scanner', 'message':'boot'}
+try :
+	r = requests.post(url, data=json.dumps(data), headers=headers, timeout=10)
+except:
+	lcd.clear()
+	lcd.message(sys.exc_info()[0]);
+	time.sleep(5)
+
+
+
 while True:
 
 	# Display scan start message
