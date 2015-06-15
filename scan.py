@@ -26,4 +26,4 @@ q = collections.deque(process.stdout, maxlen=number_of_lines)
 timer.cancel()
 
 # print saved lines
-print ''.join(q),
+print ''.join(q)
