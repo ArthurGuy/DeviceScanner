@@ -9,14 +9,15 @@ os.system("sudo hciconfig hci0 up")
 
 print("performing scan...")
 
-//Start the scan
+#Start the scan
 os.system("sudo hcitool lescan > results.txt &")
 
 time.sleep(10)
 
-//Stop the scan
+#Stop the scan
 os.system("sudo pkill --signal SIGINT hcitool")
 
+#Output the results
 with open('results.txt', 'r') as f:
     read_data = f.read()
     print read_data
