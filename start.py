@@ -154,7 +154,8 @@ while True:
 	
 	# Send the data to the server
 	headers = {'content-type': 'application/json'}
-	r = requests.post(url, data=json.dumps(device_list), headers=headers)
+	data = {'data': device_list}
+	r = requests.post(url, data=json.dumps(data), headers=headers)
 	
 	lcd.clear()
 	lcd.message(str(len(device_list)) + " devices found")
