@@ -70,7 +70,7 @@ while True:
 
 # Display start message
 lcd.clear()
-lcd.message('BLE Scanner')
+lcd.message('Device Scanner')
 time.sleep(3.0)
 
 while True:
@@ -78,7 +78,6 @@ while True:
 	# Display scan start message
 	lcd.clear()
 	lcd.message('Perforing scan..')
-	
 	
 	print("performing scan...")
 	
@@ -90,7 +89,7 @@ while True:
 	os.system("sudo hcitool lescan > results.txt &")
 	
 	#wait for the results
-	time.sleep(20)
+	time.sleep(30)
 	
 	#Stop the scan
 	os.system("sudo pkill --signal SIGINT hcitool")
@@ -111,6 +110,7 @@ while True:
 	
 	print len(results), "devices found"
 	
+	# Output the umber of devices found to the display
 	lcd.clear()
 	lcd.message(str(len(results)) + " devices found")
 	
@@ -128,8 +128,9 @@ while True:
 	
 	#print json.dumps(device_list)
 	
+	# Send the data to the server
 	r = requests.post(url, data=json.dumps(device_list))
 
-
-	time.sleep(20)
+	# Wait 30 seconds and then do it again
+	time.sleep(30)
 
