@@ -43,4 +43,6 @@ results = [s.split(" ", 1) for s in results]
 
 print results
 
+print json.dumps(results)
+
 r = requests.post(url, data=json.dumps(results))
