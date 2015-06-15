@@ -114,7 +114,7 @@ while True:
 	lcd.clear()
 	lcd.message(len(results), "devices found")
 	
-	//print results
+	#print results
 	
 	device_list = []
 	
@@ -124,9 +124,9 @@ while True:
 	    device_list.append({'mac': result_parts[0], 'name': result_parts[1]})
 	#results = [s.split(" ", 1) for s in results]
 	
-	//print device_list
+	print device_list
 	
-	//print json.dumps(device_list)
+	#print json.dumps(device_list)
 	
 	r = requests.post(url, data=json.dumps(device_list))
 
