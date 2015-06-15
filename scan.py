@@ -24,6 +24,6 @@ results = f.readlines()
 f.closed
 
 #Remove empty lines from the list
-str_list = filter(None, str_list)
+results = filter(None, results)
 
 print results
