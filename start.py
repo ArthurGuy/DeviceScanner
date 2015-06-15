@@ -153,7 +153,7 @@ while True:
 	
 	# Send the data to the server
 	headers = {'content-type': 'application/json'}
-	data = {'data': device_list}
+	data = {'devices': device_list}
 	r = requests.post(url, data=json.dumps(data), headers=headers)
 	
 	lcd.clear()
