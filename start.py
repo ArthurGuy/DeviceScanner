@@ -145,8 +145,7 @@ while True:
 	
 	# Output the number of devices found to the display
 	lcd.clear()
-	lcd.message(str(len(device_list)) + " devices found")
-	lcd.message("Uploading");
+	lcd.message(str(len(device_list)) + " devices found\nUploading")
 	
 	print device_list
 	
@@ -158,8 +157,7 @@ while True:
 	r = requests.post(url, data=json.dumps(data), headers=headers)
 	
 	lcd.clear()
-	lcd.message(str(len(device_list)) + " devices found")
-	lcd.message("Sleeping");
+	lcd.message(str(len(device_list)) + " devices found\nSleeping")
 
 	# Wait 60 seconds and then do it again
 	time.sleep(60)
