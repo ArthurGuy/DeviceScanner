@@ -26,6 +26,8 @@ f.closed
 #Remove empty lines from the list
 results = filter(None, results)
 
+results = [s.strip() for s in results]
+
 #Remove the fist info message
 if "LE Scan ..." in results: results.remove("LE Scan ...")
 
