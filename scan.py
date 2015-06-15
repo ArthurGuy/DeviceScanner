@@ -13,7 +13,7 @@ print("performing scan...")
 
 #proc = Popen(["sudo timeout 20 hcitool lescan"], stdout=PIPE, shell=True)
 # start process, redirect stdout
-process = subprocess.Popen(["sudo hcitool lescan"], stdout=subprocess.PIPE, close_fds=True)
+process = subprocess.Popen(["sudo hcitool lescan"], stdout=subprocess.PIPE)
 
 # terminate process in timeout seconds
 timeout = 20 # seconds
