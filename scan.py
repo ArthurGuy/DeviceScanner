@@ -9,7 +9,7 @@ os.system("sudo hciconfig hci0 up")
 
 print("performing scan...")
 
-proc = Popen(["sudo timeout 20 hcitool lescan"], stdout=PIPE, stderr=STDOUT, shell=True)
+proc = Popen(["sudo timeout 20 hcitool lescan"], stdout=PIPE, shell=True)
 (device, err) = proc.communicate()
 
 #Print bluetooth devices
