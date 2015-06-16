@@ -70,7 +70,6 @@ while True:
 	try:
 		s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 		s.connect(('8.8.8.8', 0))
-		lcd.set_backlight(1)
 		lcd.clear()
 		lcd.message('IP address:\n' + s.getsockname()[0])
 		time.sleep(5)
@@ -89,7 +88,7 @@ while True:
 
 # Display start message
 lcd.clear()
-lcd.message('Device Scanner')
+lcd.message('Pegasus')
 time.sleep(3.0)
 
 
@@ -111,9 +110,9 @@ while True:
 
 	# Display scan start message
 	lcd.clear()
-	lcd.message('Scanning...')
+	lcd.message('Running...')
 	
-	print("performing scan...")
+	#print("performing scan...")
 	
 	#Reset Bluetooth interface
 	os.system("sudo hciconfig hci0 down")
@@ -158,13 +157,13 @@ while True:
 	    if (not mac in device_list or not device_list[mac]):
 	    	device_list[mac] = name
 	
-	print len(device_list), "devices found"
+	#print len(device_list), "devices found"
 	
 	# Output the number of devices found to the display
 	lcd.clear()
-	lcd.message(str(len(device_list)) + " devices found\nUploading")
+	lcd.message(str(len(device_list)) + "\nUploading")
 	
-	print device_list
+	#print device_list
 	
 	#print json.dumps(device_list)
 	
@@ -180,8 +179,8 @@ while True:
 		time.sleep(5)
 	
 	lcd.clear()
-	lcd.message(str(len(device_list)) + " devices found\nSleeping")
+	lcd.message(str(len(device_list)) + "\nSleeping")
 
-	# Wait 60 seconds and then do it again
-	time.sleep(60)
+	# Wait 120 seconds and then do it again
+	time.sleep(120)
 
