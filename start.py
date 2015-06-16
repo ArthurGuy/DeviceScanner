@@ -97,7 +97,7 @@ time.sleep(3.0)
 # Send boot message
 
 headers = {'content-type': 'application/json'}
-data = {'service':'device-scanner', 'device':'bluetooth-scanner', 'message':'boot'}
+data = {'service':'device-scanner', 'device':'pegasus', 'message':'boot'}
 try :
 	r = requests.post(url, data=json.dumps(data), headers=headers, timeout=10)
 except:
@@ -170,7 +170,7 @@ while True:
 	
 	# Send the data to the server
 	headers = {'content-type': 'application/json'}
-	data = {'payload': {'bluetooth_devices': device_list}, 'service':'device-scanner', 'device':'bluetooth-scanner', 'message':'update'}
+	data = {'payload': {'bluetooth_devices': device_list}, 'service':'device-scanner', 'device':'pegasus', 'message':'update'}
 	try :
 		r = requests.post(url, data=json.dumps(data), headers=headers, timeout=10)
 	except:
