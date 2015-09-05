@@ -88,21 +88,21 @@ while True:
 
 # Display start message
 lcd.clear()
-lcd.message('Pegasus')
+lcd.message('Bluetooth Device Scanner')
 time.sleep(3.0)
 
 
 
 # Send boot message
-
-headers = {'content-type': 'application/json'}
-data = {'service':'device-scanner', 'device':'pegasus', 'message':'boot'}
-try :
-	r = requests.post(url, data=json.dumps(data), headers=headers, timeout=10)
-except:
-	lcd.clear()
-	lcd.message(sys.exc_info()[0]);
-	time.sleep(5)
+#
+#headers = {'content-type': 'application/json'}
+#data = {'service':'device-scanner', 'device':'pegasus', 'message':'boot'}
+#try :
+#	r = requests.post(url, data=json.dumps(data), headers=headers, timeout=10)
+#except:
+#	lcd.clear()
+#	lcd.message(sys.exc_info()[0]);
+#	time.sleep(5)
 
 
 
@@ -110,7 +110,7 @@ while True:
 
 	# Display scan start message
 	lcd.clear()
-	lcd.message('Running...')
+	lcd.message('Scanning...')
 	
 	#print("performing scan...")
 	
@@ -157,29 +157,30 @@ while True:
 	    if (not mac in device_list or not device_list[mac]):
 	    	device_list[mac] = name
 	
-	#print len(device_list), "devices found"
+	print len(device_list), "devices found"
 	
 	# Output the number of devices found to the display
 	lcd.clear()
-	lcd.message(str(len(device_list)) + "\nUploading")
+	#lcd.message(str(len(device_list)) + "\nUploading")
+	lcd.message("Found " + str(len(device_list)) + "Devices");
 	
 	#print device_list
 	
 	#print json.dumps(device_list)
 	
 	# Send the data to the server
-	headers = {'content-type': 'application/json'}
-	data = {'payload': {'bluetooth_devices': device_list}, 'service':'device-scanner', 'device':'pegasus', 'message':'update'}
-	try :
-		r = requests.post(url, data=json.dumps(data), headers=headers, timeout=10)
-	except:
-		lcd.clear()
-		lcd.message(sys.exc_info()[0]);
+	#headers = {'content-type': 'application/json'}
+	#data = {'payload': {'bluetooth_devices': device_list}, 'service':'device-scanner', 'device':'pegasus', 'message':'update'}
+	#try :
+	#	r = requests.post(url, data=json.dumps(data), headers=headers, timeout=10)
+	#except:
+	#	lcd.clear()
+	#	lcd.message(sys.exc_info()[0]);
 		
 		time.sleep(5)
 	
 	lcd.clear()
-	lcd.message(str(len(device_list)) + "\nSleeping")
+	lcd.message("Sleeping")
 
 	# Wait 120 seconds and then do it again
 	time.sleep(120)
